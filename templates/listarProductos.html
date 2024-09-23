@@ -1,0 +1,122 @@
+{% extends "index.html" %}
+
+{% block encabezado %}
+    {% include "encabezado.html" %}
+{% endblock %}
+
+{% block menu %}
+    {% include "menu.html" %}
+{% endblock %}
+
+{% block contenido %}
+    <script>obtenerProductos()</script>
+    <div class="bg-white ">
+        <div class="mx-auto max-w-2xl px-2 py-2 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 ">
+            <h3 class="text-4xl font-bold tracking-tight text-gray-900 text-center ">LISTA DE PRODUCTOS</h3>
+            <a href="/agregar">
+                <button class="bg-red-700 text-white py-2 px-10 rounded-lg text-xl">Agregar</button>
+            </a>
+
+            <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                {% for producto in productos %}
+                <div class="group relative">
+                    <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                        <img src="../static/imagenes/{{producto['foto']}}" alt="{{producto['nombre']}}" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                    </div>
+                    <div class="mt-4 flex justify-between">
+                        <div>
+                            <h3 class="text-sm text-gray-700">
+                                <a href="#">
+                                    <span aria-hidden="true" class="absolute inset-0"></span>
+                                    {{producto['nombre']}}
+                                </a>
+                            </h3>
+                            <p class="mt-1 text-sm text-gray-500">{{producto['categoria']}}</p>
+                        </div>
+                        <p class="text-sm font-medium text-gray-900">${{producto['precio']}}</p>
+                    </div>
+                    <div class="mt-2 flex justify-between text-xl">
+                        <a href="/consultar/{{producto['_id']}}">
+                            <i class="fa fa-refresh text-yellow-500"></i>
+                        </a>
+                        <i class="fa fa-trash text-red-500" onclick="eliminar('{{producto['_id']}}')"></i>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div>{{mensaje}}</div>
+        </div>
+    </div>
+{%endblock %}
+
+{% block piepagina %}
+    {% include "piePagina.html" %}
+{%endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+{% extends "index.html" %}
+
+{% block encabezado %}
+    {% include "encabezado.html" %}
+{% endblock %}
+
+{% block menu %}
+    {% include "menu.html" %}
+{% endblock %}
+
+{% block contenido %}
+    <script>obtenerProductos()</script>
+    <div class="bg-white ">
+        <div class="mx-auto max-w-2xl px-2 py-2 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 ">
+            <h3 class="text-4xl font-bold tracking-tight text-gray-900 text-center ">LISTA DE PRODUCTOS</h3>
+            <a href="/agregar">
+                <button class="bg-red-700 text-white py-2 px-10 rounded-lg text-xl">Agregar</button>
+            </a>
+
+            <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                {% for producto in productos %}
+                <div class="group relative">
+                    <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                        <img src="../static/imagenes/{{producto['foto']}}" alt="{{producto['nombre']}}" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                    </div>
+                    <div class="mt-4 flex justify-between">
+                        <div>
+                            <h3 class="text-sm text-gray-700">
+                                <a href="#">
+                                    <span aria-hidden="true" class="absolute inset-0"></span>
+                                    {{producto['nombre']}}
+                                </a>
+                            </h3>
+                            <p class="mt-1 text-sm text-gray-500">{{producto['categoria']}}</p>
+                        </div>
+                        <p class="text-sm font-medium text-gray-900">${{producto['precio']}}</p>
+                    </div>
+                    <div class="mt-2 flex justify-between text-xl">
+                        <a href="/consultar/{{producto['_id']}}">
+                            <div class="border-2 border-red-600 text-red-600 px-2 py-1 rounded-lg">Actualizar</div>
+                        </a>
+                        <div class="bg-red-600 text-white px-2 py-1 rounded-lg flex items-center justify-center" onclick="eliminar('{{producto['_id']}}')">Eliminar</div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div>{{mensaje}}</div>
+        </div>
+    </div>
+{%endblock %}
+
+{% block piepagina %}
+    {% include "piePagina.html" %}
+{%endblock %} -->
+
